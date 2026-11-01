@@ -1,0 +1,34 @@
+ZapretOBKHOD — сторонние компоненты / Third-party components
+============================================================
+
+Программа ZapretOBKHOD (ZapretOBKHOD.exe) — собственная оболочка. Она не изменяет
+и не распространяет исходный код перечисленных ниже компонентов, а лишь запускает
+их локально. Все компоненты находятся в папке engine\ и используются без изменений.
+
+1. zapret / winws.exe
+   Версия: 72.13
+   Автор: bol-van
+   Лицензия: MIT (текст — engine\LICENSE-zapret.txt)
+   Исходный код: https://github.com/bol-van/zapret
+
+2. WinDivert (WinDivert.dll, WinDivert64.sys)
+   Автор: Basil (reqrypt.org)
+   Лицензия: GNU Lesser General Public License v3.0 (LGPLv3)
+   Тексты лицензий: engine\LICENSE-LGPL-3.0.txt, engine\LICENSE-GPL-3.0.txt
+   Проект: https://reqrypt.org/windivert.html
+   Исходный код: https://github.com/basil00/WinDivert
+
+   WinDivert используется как отдельная динамическая библиотека (DLL) и драйвер.
+   Вы можете заменить эти файлы на совместимую изменённую версию WinDivert.
+
+3. Cygwin runtime (cygwin1.dll)
+   Лицензия: GNU General Public License v2 или новее с исключением для
+   компоновки (Cygwin linking exception).
+   Проект и исходный код: https://cygwin.com/
+   Текст GPL v2: https://www.gnu.org/licenses/old-licenses/gpl-2.0.txt
+
+   cygwin1.dll входит в официальную сборку zapret для Windows и используется
+   winws.exe. Изменения в него не вносились.
+
+Файлы лицензий предоставлены в папке engine\. Если вы распространяете эту сборку
+далее, сохраните все файлы LICENSE-*.txt и этот файл вместе с программой.
