@@ -50,12 +50,16 @@ namespace ZapretOBKHOD
         public bool ExcludeRu { get; set; }
         public bool AutoRestart { get; set; }
 
+        // Версия настроек. Нужна, чтобы при обновлении включить новые
+        // безопасные значения по умолчанию, не сбрасывая выбор пользователя.
+        public int? SettingsVersion { get; set; }
+
         public AppSettings()
         {
             PresetId = "combo";
             Autostart = false;
             MinimizeToTray = true;
-            BlockQuic = false;
+            BlockQuic = true;
             ExcludeRu = true;
             AutoRestart = true;
         }
@@ -72,6 +76,16 @@ namespace ZapretOBKHOD
                     if (loaded != null)
                     {
                         if (string.IsNullOrEmpty(loaded.PresetId)) loaded.PresetId = "combo";
+
+                        // Файл от старой версии: блокировка QUIC тогда была выключена,
+                        // из-за чего браузеры и клиенты застревали на QUIC.
+                        if (!loaded.SettingsVersion.HasValue)
+                        {
+                            loaded.BlockQuic = true;
+                            loaded.SettingsVersion = 1;
+                            Logger.Write("Настройки обновлены: блокировка QUIC включена по умолчанию.");
+                        }
+
                         return loaded;
                     }
                 }
@@ -80,13 +94,17 @@ namespace ZapretOBKHOD
             {
                 Logger.Write("Не удалось прочитать настройки: " + ex.Message);
             }
-            return new AppSettings();
+
+            var fresh = new AppSettings();
+            fresh.SettingsVersion = 1;
+            return fresh;
         }
 
         public void Save()
         {
             try
             {
+                if (!SettingsVersion.HasValue) SettingsVersion = 1;
                 AppPaths.EnsureDataDirs();
                 var serializer = new JavaScriptSerializer();
                 string json = serializer.Serialize(this);

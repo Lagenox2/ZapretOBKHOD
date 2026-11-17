@@ -1,0 +1,37 @@
+ZapretOBKHOD для Android — сведения о сторонних компонентах
+===========================================================
+
+Приложение является форком проекта ByeByeDPI и распространяется на условиях
+GNU General Public License v3.0 (см. файл LICENSE в этой папке).
+
+Исходный код сборки: папка Android/ (этот каталог).
+Изменения по сравнению с upstream ByeByeDPI: другое имя и идентификатор
+приложения, оформление, набор готовых профилей, удалены разделы пожертвований
+и ссылки на сторонние чаты.
+
+--------------------------------------------------------------------------
+1. ByeByeDPI
+   Автор: romanvht
+   https://github.com/romanvht/ByeByeDPI
+   Лицензия: GNU GPL v3.0 (файл LICENSE)
+
+2. ByeDPI (движок обхода DPI, JNI-библиотека libbyedpi.so)
+   Автор: hufrea
+   https://github.com/hufrea/byedpi
+   Лицензия: MIT
+   Текст лицензии: app/src/main/cpp/byedpi/LICENSE
+
+3. hev-socks5-tunnel (транспорт, библиотека libhev-socks5-tunnel.so)
+   Автор: heiher
+   https://github.com/heiher/hev-socks5-tunnel
+   Лицензия: MIT
+   Текст лицензии: app/src/main/jni/hev-socks5-tunnel/LICENSE
+
+   Компонент включает сторонние библиотеки (lwIP, hev-task-system, yaml,
+   wintun); их тексты лицензий находятся в
+   app/src/main/jni/hev-socks5-tunnel/third-part/*/LICENSE*.
+
+--------------------------------------------------------------------------
+Нативные библиотеки в app/src/main/jniLibs/ собраны из перечисленных
+open-source проектов без изменений и используются локально на устройстве.
+Ни один пакет пользователя не отправляется на сторонние серверы.

@@ -9,6 +9,11 @@ discordstatus.com
 discord.co
 discord.new
 discord.gift
+discordmerch.com
+discordpartygames.com
+discord-activities.com
+discordactivities.com
+discordsays.com
 cdn.discordapp.com
 gateway.discord.gg
 media.discordapp.net
